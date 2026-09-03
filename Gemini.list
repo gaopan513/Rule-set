@@ -1,0 +1,24 @@
+# > Gemini Web & App
+DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,bard.google.com
+DOMAIN-SUFFIX,gemini.google
+
+# > Google AI Studio & APIs
+DOMAIN-SUFFIX,aistudio.google.com
+DOMAIN-SUFFIX,makersuite.google.com
+DOMAIN-SUFFIX,ai.google.dev
+DOMAIN-SUFFIX,generativeai.google
+DOMAIN-SUFFIX,generativelanguage.googleapis.com
+DOMAIN,alkalimakersuite-pa.clients6.google.com
+
+# > NotebookLM & Research
+DOMAIN-SUFFIX,notebooklm.google
+DOMAIN-SUFFIX,notebooklm.google.com
+DOMAIN-SUFFIX,deepmind.com
+DOMAIN-SUFFIX,deepmind.google
+DOMAIN-SUFFIX,colab.google
+DOMAIN,colab.research.google.com
+
+# > 移动端后台与通信依赖
+DOMAIN,proactivebackend-pa.googleapis.com
+DOMAIN,waa-pa.clients6.google.com
