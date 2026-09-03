@@ -1,24 +1,33 @@
-# > Gemini Web & App
+# > Gemini Web & iOS App 核心
+DOMAIN-SUFFIX,gemini.google
 DOMAIN-SUFFIX,gemini.google.com
 DOMAIN-SUFFIX,bard.google.com
-DOMAIN-SUFFIX,gemini.google
+DOMAIN-KEYWORD,gemini.google
 
-# > Google AI Studio & APIs
+# > Google AI Studio & 开发者接口
 DOMAIN-SUFFIX,aistudio.google.com
 DOMAIN-SUFFIX,makersuite.google.com
+DOMAIN-SUFFIX,generativelanguage.googleapis.com
 DOMAIN-SUFFIX,ai.google.dev
 DOMAIN-SUFFIX,generativeai.google
-DOMAIN-SUFFIX,generativelanguage.googleapis.com
-DOMAIN,alkalimakersuite-pa.clients6.google.com
 
-# > NotebookLM & Research
-DOMAIN-SUFFIX,notebooklm.google
-DOMAIN-SUFFIX,notebooklm.google.com
-DOMAIN-SUFFIX,deepmind.com
-DOMAIN-SUFFIX,deepmind.google
-DOMAIN-SUFFIX,colab.google
-DOMAIN,colab.research.google.com
-
-# > 移动端后台与通信依赖
+# > iOS App 核心通信与 RPC 接口
 DOMAIN,proactivebackend-pa.googleapis.com
 DOMAIN,waa-pa.clients6.google.com
+DOMAIN,alkalimakersuite-pa.clients6.google.com
+DOMAIN,alkalirepo-pa.clients6.google.com
+DOMAIN,cloudcode-pa.googleapis.com
+
+# > NotebookLM & DeepMind
+DOMAIN-SUFFIX,notebooklm.google
+DOMAIN-SUFFIX,notebooklm.google.com
+DOMAIN-SUFFIX,deepmind.google
+DOMAIN-SUFFIX,deepmind.com
+
+# > 多媒体渲染与静态资源 (用于生图展示与语音通道)
+DOMAIN-SUFFIX,googleusercontent.com
+DOMAIN-SUFFIX,gstatic.com
+
+# > 账号与凭据鉴权 (保障与主接口处于同一出口 IP)
+DOMAIN,accounts.google.com
+DOMAIN,apis.google.com
