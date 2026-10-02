@@ -1,0 +1,16 @@
+# Claude / Anthropic 全量分流规则（Quantumult X [filter_local]）
+# 整理时间：2026-10-02；交叉来源：Anthropic 官方网络配置口径、多个社区防火墙 allowlist、实测
+# 用法：把下面每行的 PROXY 换成你自己的策略组名，粘贴到圈X配置文件的 [filter_local] 里
+# 覆盖说明：
+#   anthropic.com  → api.anthropic.com（API/Claude Code）、console.anthropic.com、
+#                    auth.anthropic.com（登录）、statsig.anthropic.com（特性开关）
+#   claude.ai      → 网页版、www.claude.ai、downloads.claude.ai（Claude Code 更新）
+#   claude.com     → Anthropic 新主域名、platform.claude.com（新控制台）
+#   sentry.io      → Claude Code 错误上报，不走代理可能导致 CLI 卡顿
+#   statsig.com    → 特性开关备用域名
+
+HOST-SUFFIX,anthropic.com,PROXY
+HOST-SUFFIX,claude.ai,PROXY
+HOST-SUFFIX,claude.com,PROXY
+HOST-SUFFIX,sentry.io,PROXY
+HOST-SUFFIX,statsig.com,PROXY
