@@ -1,0 +1,35 @@
+# Muse / Meta AI 全量分流规则（Quantumult X [filter_local] / [filter_remote]）
+# 整理时间：2026-10-05；整合来源：
+# - muse.ai 实测 CSP（直连抓取，含 chat 网关、CDN、支付、上报域名）
+# - deezertidal/QuantumultX-Rewrite（rule/MetaAI.list）、VPSDance/ai-proxy-rules 等社区规则
+# 说明：
+# - 规则不带策略组名，在圈X订阅设置的 force-policy 里选策略组
+# - 订阅示例：https://raw.githubusercontent.com/gaopan513/Rule-set/main/muse-routing.list, tag=Muse分流, force-policy=Muse, enabled=true
+# - facebook.com / instagram.com / fbcdn.net 等 Meta 通用基建未收录（会被其他 App 共用，按需自行添加）
+
+# ---- 核心服务 ----
+HOST-SUFFIX,muse.ai
+# 主站、api.muse.ai、auth.muse.ai（登录跳转）、introducing.muse.ai
+HOST-SUFFIX,meta.ai
+# Meta AI 聊天网关：gateway.meta.ai、edge-chat.meta.ai、shortwave.meta.ai（WebSocket）
+# ---- 用户内容 CDN ----
+HOST-SUFFIX,metaaiusercontent.com
+# *.h/s/cf.metaaiusercontent.com（图片/文件，CSP 实测）
+HOST-SUFFIX,ecto1usercontent.com
+# *.s/cf.ecto1usercontent.com（CSP 实测）
+HOST-SUFFIX,meta-agents-apps.workers.dev
+# Meta agents 应用（CSP frame-src 实测，Cloudflare Workers 托管）
+HOST-SUFFIX,metaaivm.com
+# 社区 MetaAI 清单收录（Meta AI VM 相关基建）
+# ---- 错误上报 ----
+HOST,o4509963614355457.ingest.us.sentry.io
+# Muse 网页端 Sentry 上报（CSP report-uri 实测，精确到项目避免误伤其他 App）
+# ---- 可选：Llama 开发者生态 ----
+# HOST-SUFFIX,llama.com
+# HOST-SUFFIX,llamameta.net
+# HOST-SUFFIX,ai.meta.com
+# HOST-SUFFIX,developer.meta.com
+# ---- 可选：应用内支付（Stripe Link，范围较宽，按需开）----
+# HOST-SUFFIX,stripe.com
+# HOST-SUFFIX,stripecdn.com
+# HOST-SUFFIX,stripe.network
