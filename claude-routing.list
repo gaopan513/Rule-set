@@ -6,51 +6,52 @@
 # - claude.ai 实测 CSP（urlscan，确认 MCP 相关域名）
 # - Centralmatrix3/Matrix-io、Moli-X 等社区 QX/Clash 规则
 # 说明：
-# - 规则不带策略组名，在圈X订阅设置的 force-policy 里选策略组
+# - 每条规则末尾的 PROXY 是圈X内置策略占位（语法要求必须带策略名，非自定义策略组）；
+#  在圈X资源设置里打开「策略偏好」，选择你自己的策略组（如 Claude）即可覆盖它
 # - 订阅示例：https://raw.githubusercontent.com/gaopan513/Rule-set/main/claude-routing.list, tag=Claude分流, force-policy=Claude, enabled=true
 # - storage.googleapis.com 未收录：它是 Google 公共存储，收录会误伤其他 App 流量
 
 # ---- 核心服务 ----
-HOST-SUFFIX,anthropic.com
+HOST-SUFFIX,anthropic.com,PROXY
 # api.anthropic.com（API/Claude Code）、console.anthropic.com、auth.anthropic.com（登录）、
 # statsig.anthropic.com（特性开关）、status/sentry/mcp-proxy/support 等子域名
-HOST-SUFFIX,claude.ai
+HOST-SUFFIX,claude.ai,PROXY
 # 网页版、www.claude.ai、downloads.claude.ai（桌面端/CLI 自动更新）
-HOST-SUFFIX,claude.com
+HOST-SUFFIX,claude.com,PROXY
 # 新主域名；platform.claude.com（OAuth 登录/token 刷新/账单）、code/docs/support.claude.com
-HOST-SUFFIX,claude.app
+HOST-SUFFIX,claude.app,PROXY
 # *.livepreview.claude.app（claude.ai 的 CSP 中引用）
-HOST-SUFFIX,claudeusercontent.com
+HOST-SUFFIX,claudeusercontent.com,PROXY
 # Artifact 渲染、文件预览、用户上传（conway.claudeusercontent.com 等）
-HOST-SUFFIX,clau.de
+HOST-SUFFIX,clau.de,PROXY
 # Anthropic 官方短链（CLI 输出、插件市场提交链接用）
-HOST-SUFFIX,claudemcpclient.com
+HOST-SUFFIX,claudemcpclient.com,PROXY
 # MCP 应用挂件（claude.ai 实测 CSP 引用）
-HOST-SUFFIX,claudemcpcontent.com
+HOST-SUFFIX,claudemcpcontent.com,PROXY
 # MCP 内容分发（claude.ai 实测 CSP 引用，*.claudemcpcontent.com）
 # ---- MCP 生态 ----
-HOST-SUFFIX,modelcontextprotocol.io
+HOST-SUFFIX,modelcontextprotocol.io,PROXY
 # MCP 官方规范站
 # ---- 特性开关 ----
-HOST-SUFFIX,statsig.com
-HOST,cdn.growthbook.io
+HOST-SUFFIX,statsig.com,PROXY
+HOST,cdn.growthbook.io,PROXY
 # Claude Code CLI 的 A/B 测试与灰度开关
 # ---- 错误上报与遥测 ----
-HOST-SUFFIX,sentry.io
+HOST-SUFFIX,sentry.io,PROXY
 # 覆盖 sentry.io、*.sentry.io（Claude Code 错误上报）
-HOST-SUFFIX,browserintakedatadoghq.com
-HOST-SUFFIX,browserintakeus3-datadoghq.com
-HOST-SUFFIX,browserintakeus5-datadoghq.com
-HOST-SUFFIX,browserintakeap1-datadoghq.com
-HOST-SUFFIX,browserintakeap2-datadoghq.com
-HOST-SUFFIX,browserintakedatadoghq.eu
-HOST-SUFFIX,browserintakeddoggov.com
+HOST-SUFFIX,browserintakedatadoghq.com,PROXY
+HOST-SUFFIX,browserintakeus3-datadoghq.com,PROXY
+HOST-SUFFIX,browserintakeus5-datadoghq.com,PROXY
+HOST-SUFFIX,browserintakeap1-datadoghq.com,PROXY
+HOST-SUFFIX,browserintakeap2-datadoghq.com,PROXY
+HOST-SUFFIX,browserintakedatadoghq.eu,PROXY
+HOST-SUFFIX,browserintakeddoggov.com,PROXY
 # Datadog 性能遥测 7 个 intake 域名（官方 trust 清单）
-HOST,cdn.usefathom.com
+HOST,cdn.usefathom.com,PROXY
 # claude.ai 站内统计
 # ---- 应用内客服挂件 ----
-HOST-SUFFIX,intercom.io
-HOST-SUFFIX,intercomcdn.com
+HOST-SUFFIX,intercom.io,PROXY
+HOST-SUFFIX,intercomcdn.com,PROXY
 # ---- Anthropic 机房 IP 段（AS399358，官方文档公布）----
-IP-CIDR,160.79.104.0/21
-IP6-CIDR,2607:6bc0::/48
+IP-CIDR,160.79.104.0/21,PROXY
+IP6-CIDR,2607:6bc0::/48,PROXY
