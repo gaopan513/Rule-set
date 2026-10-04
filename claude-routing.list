@@ -1,0 +1,56 @@
+# Claude / Anthropic 全量分流规则（Quantumult X [filter_local] / [filter_remote]）
+# 整理时间：2026-10-05；整合来源：
+# - kerwinruby/anthropic-claude-surge-rules-set（domains.yaml，二进制+流量实测，最权威的社区清单）
+# - Anthropic 官方 trust 文档（Claude Desktop 3P 出站清单）
+# - Anthropic 官方 network-config 文档（OAuth/登录域名）
+# - claude.ai 实测 CSP（urlscan，确认 MCP 相关域名）
+# - Centralmatrix3/Matrix-io、Moli-X 等社区 QX/Clash 规则
+# 说明：
+# - 规则不带策略组名，在圈X订阅设置的 force-policy 里选策略组
+# - 订阅示例：https://raw.githubusercontent.com/gaopan513/Rule-set/main/claude-routing.list, tag=Claude分流, force-policy=Claude, enabled=true
+# - storage.googleapis.com 未收录：它是 Google 公共存储，收录会误伤其他 App 流量
+
+# ---- 核心服务 ----
+HOST-SUFFIX,anthropic.com
+# api.anthropic.com（API/Claude Code）、console.anthropic.com、auth.anthropic.com（登录）、
+# statsig.anthropic.com（特性开关）、status/sentry/mcp-proxy/support 等子域名
+HOST-SUFFIX,claude.ai
+# 网页版、www.claude.ai、downloads.claude.ai（桌面端/CLI 自动更新）
+HOST-SUFFIX,claude.com
+# 新主域名；platform.claude.com（OAuth 登录/token 刷新/账单）、code/docs/support.claude.com
+HOST-SUFFIX,claude.app
+# *.livepreview.claude.app（claude.ai 的 CSP 中引用）
+HOST-SUFFIX,claudeusercontent.com
+# Artifact 渲染、文件预览、用户上传（conway.claudeusercontent.com 等）
+HOST-SUFFIX,clau.de
+# Anthropic 官方短链（CLI 输出、插件市场提交链接用）
+HOST-SUFFIX,claudemcpclient.com
+# MCP 应用挂件（claude.ai 实测 CSP 引用）
+HOST-SUFFIX,claudemcpcontent.com
+# MCP 内容分发（claude.ai 实测 CSP 引用，*.claudemcpcontent.com）
+# ---- MCP 生态 ----
+HOST-SUFFIX,modelcontextprotocol.io
+# MCP 官方规范站
+# ---- 特性开关 ----
+HOST-SUFFIX,statsig.com
+HOST,cdn.growthbook.io
+# Claude Code CLI 的 A/B 测试与灰度开关
+# ---- 错误上报与遥测 ----
+HOST-SUFFIX,sentry.io
+# 覆盖 sentry.io、*.sentry.io（Claude Code 错误上报）
+HOST-SUFFIX,browserintakedatadoghq.com
+HOST-SUFFIX,browserintakeus3-datadoghq.com
+HOST-SUFFIX,browserintakeus5-datadoghq.com
+HOST-SUFFIX,browserintakeap1-datadoghq.com
+HOST-SUFFIX,browserintakeap2-datadoghq.com
+HOST-SUFFIX,browserintakedatadoghq.eu
+HOST-SUFFIX,browserintakeddoggov.com
+# Datadog 性能遥测 7 个 intake 域名（官方 trust 清单）
+HOST,cdn.usefathom.com
+# claude.ai 站内统计
+# ---- 应用内客服挂件 ----
+HOST-SUFFIX,intercom.io
+HOST-SUFFIX,intercomcdn.com
+# ---- Anthropic 机房 IP 段（AS399358，官方文档公布）----
+IP-CIDR,160.79.104.0/21
+IP6-CIDR,2607:6bc0::/48
