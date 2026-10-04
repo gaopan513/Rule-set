@@ -25,6 +25,9 @@ HOST-SUFFIX,metaaivm.com,PROXY
 # ---- 错误上报 ----
 HOST,o4509963614355457.ingest.us.sentry.io,PROXY
 # Muse 网页端 Sentry 上报（CSP report-uri 实测，精确到项目避免误伤其他 App）
+# ---- Meta 账号登录 ----
+HOST,auth.meta.com,PROXY
+# Meta 统一账号登录域（实测 302 跳转至 www.facebook.com/aymh/redirect-cycle/，与 auth.muse.ai 同链路）
 # ---- 可选：Llama 开发者生态 ----
 # HOST-SUFFIX,llama.com
 # HOST-SUFFIX,llamameta.net
