@@ -8,7 +8,8 @@
 # - 每条规则末尾的 PROXY 是圈X内置策略占位（语法要求必须带策略名，非自定义策略组）；
 #  在圈X资源设置里打开「策略偏好」，选择你自己的策略组（如 Muse）即可覆盖它
 # - 订阅示例：https://raw.githubusercontent.com/gaopan513/Rule-set/main/muse-routing.list, tag=Muse分流, force-policy=Muse, enabled=true
-# - facebook.com / instagram.com / fbcdn.net 等 Meta 通用基建未收录（会被其他 App 共用，按需自行添加）
+# - facebook.com / instagram.com / fbcdn.net 等 Meta 通用基建后缀未收录（会被其他 App 共用，按需自行添加）；
+#  但登录链路的 www.facebook.com 与 graph.facebook.com 经用户 2026-10-06 批准单独加入（精确 HOST，不波及其他）
 
 # ---- 核心服务 ----
 HOST-SUFFIX,muse.ai,PROXY
@@ -33,6 +34,10 @@ HOST,meta-ohttp-relay-prod.fastly-edge.com,PROXY
 HOST,o4509963614355457.ingest.us.sentry.io,PROXY
 # Muse 网页端 Sentry 上报（CSP report-uri 实测，精确到项目避免误伤其他 App）
 # ---- Meta 账号登录 ----
+HOST,www.facebook.com,PROXY
+# 2026-10-06 用户决定加入：Muse 登录 302 跳转的 Facebook 登录页（实测 auth.muse.ai → www.facebook.com/aymh/redirect-cycle/）
+HOST,graph.facebook.com,PROXY
+# 2026-10-06 用户决定加入：Meta Graph API，登录后拉取 Meta 账号资料（名字/头像/账号 ID）
 HOST-SUFFIX,meta.com,PROXY
 # 2026-10-05 用户决定收全：覆盖 auth.meta.com（Meta 统一账号登录域，实测 302 跳转至
 # www.facebook.com/aymh/redirect-cycle/，与 auth.muse.ai 同链路）及 meta.com 下全部子域
