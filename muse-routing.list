@@ -2,6 +2,8 @@
 # 整理时间：2026-10-05；整合来源：
 # - muse.ai 实测 CSP（直连抓取，含 chat 网关、CDN、支付、上报域名）
 # - deezertidal/QuantumultX-Rewrite（rule/MetaAI.list）、VPSDance/ai-proxy-rules 等社区规则
+# - 2026-10-05 补：RuleGo AI.list（ConnersHua）、墨鱼 Ai.yaml（ddgksf2013）
+#   已对比黑名单/神机等社区清单——无 MetaAI/Muse 专项分节，其余 Meta 域名均被上文覆盖
 # 说明：
 # - 每条规则末尾的 PROXY 是圈X内置策略占位（语法要求必须带策略名，非自定义策略组）；
 #  在圈X资源设置里打开「策略偏好」，选择你自己的策略组（如 Muse）即可覆盖它
@@ -13,6 +15,8 @@ HOST-SUFFIX,muse.ai,PROXY
 # 主站、api.muse.ai、auth.muse.ai（登录跳转）、introducing.muse.ai
 HOST-SUFFIX,meta.ai,PROXY
 # Meta AI 聊天网关：gateway.meta.ai、edge-chat.meta.ai、shortwave.meta.ai（WebSocket）
+HOST,imagine.meta.com,PROXY
+# Meta Imagine（AI 生图），挂在 meta.com 下，meta.ai 后缀覆盖不到（RuleGo AI.list）
 # ---- 用户内容 CDN ----
 HOST-SUFFIX,metaaiusercontent.com,PROXY
 # *.h/s/cf.metaaiusercontent.com（图片/文件，CSP 实测）
@@ -22,6 +26,10 @@ HOST-SUFFIX,meta-agents-apps.workers.dev,PROXY
 # Meta agents 应用（CSP frame-src 实测，Cloudflare Workers 托管）
 HOST-SUFFIX,metaaivm.com,PROXY
 # 社区 MetaAI 清单收录（Meta AI VM 相关基建）
+# ---- 隐私中继（OHTTP）----
+HOST,meta-ohttp-config-prod.fastly-edge.com,PROXY
+HOST,meta-ohttp-relay-prod.fastly-edge.com,PROXY
+# Meta AI 隐私中继（Fastly 托管），墨鱼 Ai.yaml「Muse AI」分节
 # ---- 错误上报 ----
 HOST,o4509963614355457.ingest.us.sentry.io,PROXY
 # Muse 网页端 Sentry 上报（CSP report-uri 实测，精确到项目避免误伤其他 App）
