@@ -5,6 +5,8 @@
 # - Anthropic 官方 network-config 文档（OAuth/登录域名）
 # - claude.ai 实测 CSP（urlscan，确认 MCP 相关域名）
 # - Centralmatrix3/Matrix-io、Moli-X 等社区 QX/Clash 规则
+# - 2026-10-05 补：RuleGo AI.list（ConnersHua）、毒奶 AI_Platforms_qx.list（limbopro），
+#   已对比 blackmatrix7 Claude.list、墨鱼 Ai.yaml、fmz200 AI.list——其余 Claude 域名均被上文覆盖
 # 说明：
 # - 每条规则末尾的 PROXY 是圈X内置策略占位（语法要求必须带策略名，非自定义策略组）；
 #  在圈X资源设置里打开「策略偏好」，选择你自己的策略组（如 Claude）即可覆盖它
@@ -55,3 +57,10 @@ HOST-SUFFIX,intercomcdn.com,PROXY
 # ---- Anthropic 机房 IP 段（AS399358，官方文档公布）----
 IP-CIDR,160.79.104.0/21,PROXY
 IP6-CIDR,2607:6bc0::/48,PROXY
+# ---- 社区懒人配置补漏（2026-10-05，对比后新增）----
+HOST,anthropic-com.ghost.io,PROXY
+# Anthropic 官网托管在 Ghost 上的域名（RuleGo AI.list）
+HOST,servd-anthropic-website.b-cdn.net,PROXY
+# Anthropic 官网的 Bunny CDN 资源域名（RuleGo AI.list）
+DOMAIN-KEYWORD,claude,PROXY
+# 关键字兜底：捕获所有含 claude 的域名（毒奶 AI_Platforms_qx.list）
