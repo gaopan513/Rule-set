@@ -15,8 +15,7 @@ HOST-SUFFIX,muse.ai,PROXY
 # 主站、api.muse.ai、auth.muse.ai（登录跳转）、introducing.muse.ai
 HOST-SUFFIX,meta.ai,PROXY
 # Meta AI 聊天网关：gateway.meta.ai、edge-chat.meta.ai、shortwave.meta.ai（WebSocket）
-HOST,imagine.meta.com,PROXY
-# Meta Imagine（AI 生图），挂在 meta.com 下，meta.ai 后缀覆盖不到（RuleGo AI.list）
+# 注：imagine.meta.com（Meta Imagine AI 生图，RuleGo AI.list）已被下方 meta.com 后缀覆盖
 # ---- 用户内容 CDN ----
 HOST-SUFFIX,metaaiusercontent.com,PROXY
 # *.h/s/cf.metaaiusercontent.com（图片/文件，CSP 实测）
@@ -34,8 +33,9 @@ HOST,meta-ohttp-relay-prod.fastly-edge.com,PROXY
 HOST,o4509963614355457.ingest.us.sentry.io,PROXY
 # Muse 网页端 Sentry 上报（CSP report-uri 实测，精确到项目避免误伤其他 App）
 # ---- Meta 账号登录 ----
-HOST,auth.meta.com,PROXY
-# Meta 统一账号登录域（实测 302 跳转至 www.facebook.com/aymh/redirect-cycle/，与 auth.muse.ai 同链路）
+HOST-SUFFIX,meta.com,PROXY
+# 2026-10-05 用户决定收全：覆盖 auth.meta.com（Meta 统一账号登录域，实测 302 跳转至
+# www.facebook.com/aymh/redirect-cycle/，与 auth.muse.ai 同链路）及 meta.com 下全部子域
 # ---- 可选：Llama 开发者生态 ----
 # HOST-SUFFIX,llama.com
 # HOST-SUFFIX,llamameta.net
