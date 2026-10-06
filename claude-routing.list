@@ -62,5 +62,7 @@ HOST,anthropic-com.ghost.io,PROXY
 # Anthropic 官网托管在 Ghost 上的域名（RuleGo AI.list）
 HOST,servd-anthropic-website.b-cdn.net,PROXY
 # Anthropic 官网的 Bunny CDN 资源域名（RuleGo AI.list）
+HOST,anthropic.com.cdn.cloudflare.net,PROXY
+# Anthropic 官网的 Cloudflare CDN 域名（RuleGo AI.list；2026-10-06 对比 ai-platforms.list 补入）
 DOMAIN-KEYWORD,claude,PROXY
 # 关键字兜底：捕获所有含 claude 的域名（毒奶 AI_Platforms_qx.list）
