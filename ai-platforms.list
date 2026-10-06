@@ -6,6 +6,8 @@
 # - fmz200/wool_scripts Loon/rule/AI.list（奶思，lodepuly+fmz200，2026-03-31）
 # - ddgksf2013/Filter Ai.yaml（墨鱼，2026-09-30）
 # 注：肖大、Yatta、奇心三家配置无 AI 专项分流
+# 2026-10-06 用户要求：移除 OpenAI / ChatGPT 分区（用户有单独的 OpenAI 分流），
+# 移除字节 AI 分区（Cici、Dola 等国内厂商出海模型）；其余 165 条
 # 说明：
 # - 每条规则末尾的 PROXY 是圈X内置策略占位（语法要求必须带策略名，非自定义策略组）；
 #  在圈X资源设置里打开「策略偏好」，选择你自己的策略组（如 AI）即可覆盖它
@@ -78,36 +80,6 @@ HOST,anthropic.com.cdn.cloudflare.net,PROXY
 HOST,anthropic-com.ghost.io,PROXY
 HOST,servd-anthropic-website.b-cdn.net,PROXY
 DOMAIN-KEYWORD,claude,PROXY
-
-# ==================== OpenAI / ChatGPT（28）====================
-HOST-SUFFIX,chat.com,PROXY
-HOST-SUFFIX,chatgpt.com,PROXY
-HOST-SUFFIX,livekit.cloud,PROXY
-HOST-SUFFIX,oaistatic.com,PROXY
-HOST-SUFFIX,oaiusercontent.com,PROXY
-HOST-SUFFIX,openai.com,PROXY
-HOST-SUFFIX,sora.com,PROXY
-HOST,openaiapi-site.azureedge.net,PROXY
-DOMAIN-KEYWORD,openaiapi,PROXY
-DOMAIN-KEYWORD,openaicom,PROXY
-HOST,chat.openai.com.cdn.cloudflare.net,PROXY
-HOST,openai-api.arkoselabs.com,PROXY
-HOST,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net,PROXY
-HOST,openaicomproductionae4b.blob.core.windows.net,PROXY
-HOST,production-openaicom-storage.azureedge.net,PROXY
-HOST-SUFFIX,chatgpt.livekit.cloud,PROXY
-HOST-SUFFIX,host.livekit.cloud,PROXY
-HOST-SUFFIX,openaiapi-site.azureedge.net,PROXY
-HOST-SUFFIX,openaicom.imgix.net,PROXY
-HOST-SUFFIX,turn.livekit.cloud,PROXY
-DOMAIN-KEYWORD,openai,PROXY
-IP-CIDR,24.199.123.28/32,PROXY
-IP-CIDR,64.23.132.171/32,PROXY
-AND,AND, ((DOMAIN-KEYWORD, chatgpt-async-webps-prod-), (DOMAIN-SUFFIX, webpubsub.azure.com)),PROXY
-AND,AND, ((DOMAIN-KEYWORD, openaicom-api-), (DOMAIN-SUFFIX, azurefd.net)),PROXY
-HOST,chatgpt.livekit.cloud,PROXY
-HOST,host.livekit.cloud,PROXY
-HOST,openai.com.cdn.cloudflare.net,PROXY
 
 # ==================== OpenRouter（1）====================
 HOST-SUFFIX,openrouter.ai,PROXY
@@ -210,12 +182,6 @@ HOST-SUFFIX,perplexity.com,PROXY
 HOST-SUFFIX,grok.com,PROXY
 HOST-SUFFIX,x.ai,PROXY
 HOST,api.x.ai,PROXY
-
-# ==================== 字节 AI（4）====================
-HOST-SUFFIX,cici.com,PROXY
-HOST-SUFFIX,ciciai.com,PROXY
-HOST-SUFFIX,dola.com,PROXY
-HOST-SUFFIX,byteoversea.com,PROXY
 
 # ==================== 其他（6）====================
 HOST-SUFFIX,ai.com,PROXY
