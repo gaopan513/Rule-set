@@ -8,6 +8,8 @@
 # 注：肖大、Yatta、奇心三家配置无 AI 专项分流
 # 2026-10-06 用户要求：移除 OpenAI / ChatGPT 分区（用户有单独的 OpenAI 分流），
 # 移除字节 AI 分区（Cici、Dola 等国内厂商出海模型），移除 Apple Intelligence 与 Trae 分区；其余 150 条
+# 2026-10-06 从 claude-routing.list 回补 12 条到 Claude 分区（claude.app、modelcontextprotocol.io、
+# cdn.growthbook.io、Datadog 区域遥测域名 ×7、Anthropic 机房 IP 段 ×2）；现 162 条
 # 说明：
 # - 每条规则末尾的 PROXY 是圈X内置策略占位（语法要求必须带策略名，非自定义策略组）；
 #  在圈X资源设置里打开「策略偏好」，选择你自己的策略组（如 AI）即可覆盖它
@@ -52,7 +54,7 @@ HOST,in.appcenter.ms,PROXY
 HOST-SUFFIX,azureedge.net,PROXY
 HOST-SUFFIX,imgix.net,PROXY
 
-# ==================== Anthropic / Claude（12）====================
+# ==================== Anthropic / Claude（24）====================
 HOST-SUFFIX,anthropic.com,PROXY
 HOST-SUFFIX,claude.ai,PROXY
 HOST-SUFFIX,claude.com,PROXY
@@ -65,6 +67,23 @@ HOST,anthropic.com.cdn.cloudflare.net,PROXY
 HOST,anthropic-com.ghost.io,PROXY
 HOST,servd-anthropic-website.b-cdn.net,PROXY
 DOMAIN-KEYWORD,claude,PROXY
+HOST-SUFFIX,claude.app,PROXY
+# Claude 新主域名相关（claude-routing.list 补入）
+HOST-SUFFIX,modelcontextprotocol.io,PROXY
+# MCP 官方规范站（claude-routing.list 补入）
+HOST,cdn.growthbook.io,PROXY
+# Claude Code CLI 特性开关（claude-routing.list 补入）
+HOST-SUFFIX,browserintakedatadoghq.com,PROXY
+HOST-SUFFIX,browserintakeus3-datadoghq.com,PROXY
+HOST-SUFFIX,browserintakeus5-datadoghq.com,PROXY
+HOST-SUFFIX,browserintakeap1-datadoghq.com,PROXY
+HOST-SUFFIX,browserintakeap2-datadoghq.com,PROXY
+HOST-SUFFIX,browserintakedatadoghq.eu,PROXY
+HOST-SUFFIX,browserintakeddoggov.com,PROXY
+# Datadog 遥测区域域名补全（claude-routing.list 补入）
+IP-CIDR,160.79.104.0/21,PROXY
+IP6-CIDR,2607:6bc0::/48,PROXY
+# Anthropic 官方机房 IP 段 AS399358（claude-routing.list 补入）
 
 # ==================== OpenRouter（1）====================
 HOST-SUFFIX,openrouter.ai,PROXY
