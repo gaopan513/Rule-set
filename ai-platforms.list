@@ -7,27 +7,12 @@
 # - ddgksf2013/Filter Ai.yaml（墨鱼，2026-09-30）
 # 注：肖大、Yatta、奇心三家配置无 AI 专项分流
 # 2026-10-06 用户要求：移除 OpenAI / ChatGPT 分区（用户有单独的 OpenAI 分流），
-# 移除字节 AI 分区（Cici、Dola 等国内厂商出海模型）；其余 165 条
+# 移除字节 AI 分区（Cici、Dola 等国内厂商出海模型），移除 Apple Intelligence 与 Trae 分区；其余 150 条
 # 说明：
 # - 每条规则末尾的 PROXY 是圈X内置策略占位（语法要求必须带策略名，非自定义策略组）；
 #  在圈X资源设置里打开「策略偏好」，选择你自己的策略组（如 AI）即可覆盖它
 # - IP-ASN 类规则已剔除（QX filter 不支持该类型）
 # - 订阅示例：https://raw.githubusercontent.com/gaopan513/Rule-set/main/ai-platforms.list, tag=AI分流, force-policy=AI, enabled=true
-
-# ==================== Apple Intelligence（13）====================
-HOST-SUFFIX,smoot.apple.com,PROXY
-HOST,apple-relay.apple.com,PROXY
-HOST,apple-relay.cloudflare.com,PROXY
-HOST,apple-relay.fastly-edge.com,PROXY
-HOST-SUFFIX,gateway.icloud.com,PROXY
-HOST,guzzoni.apple.com,PROXY
-HOST,gspe1-ssl.ls.apple.com,PROXY
-HOST-SUFFIX,apple-relay.apple.com,PROXY
-HOST-SUFFIX,apple-relay.fastly-edge.com,PROXY
-HOST-SUFFIX,apple-relay.cloudflare.com,PROXY
-HOST-SUFFIX,apple-relay.akamaized.net,PROXY
-HOST-SUFFIX,guzzoni.apple.com,PROXY
-HOST-SUFFIX,gspe1-ssl.ls.apple.com,PROXY
 
 # ==================== 通用基础设施（AI 应用共用）（36）====================
 HOST,cp4.cloudflare.com,PROXY
@@ -198,10 +183,6 @@ HOST-SUFFIX,jetbrains.ai,PROXY
 HOST,chat.mistral.ai,PROXY
 HOST,console.mistral.ai,PROXY
 HOST-SUFFIX,mistral.ai,PROXY
-
-# ==================== Trae（2）====================
-HOST,trae-api-sg.mchost.guru,PROXY
-HOST-SUFFIX,trae.ai,PROXY
 
 # ==================== Dify（1）====================
 HOST-SUFFIX,dify.ai,PROXY
