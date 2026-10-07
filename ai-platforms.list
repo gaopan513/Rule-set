@@ -16,6 +16,9 @@
 # - IP-ASN 类规则已剔除（QX filter 不支持该类型）
 # - 订阅示例：https://raw.githubusercontent.com/gaopan513/Rule-set/main/ai-platforms.list, tag=AI分流, force-policy=AI, enabled=true
 
+# 2026-10-07 用户要求：AI 全进一个合集：并回 OpenAI/ChatGPT 分区，新增 Hark 分区（hark.com 后缀覆盖官网/api/app/auth/cdn，基础版）；
+# 各独立订阅（claude/google-ai/muse/perplexity/xai）缺失规则已并入对应分区，独立订阅文件原样保留、订阅可继续用或移除
+
 # ==================== 通用基础设施（AI 应用共用）（36）====================
 HOST,cp4.cloudflare.com,PROXY
 HOST-SUFFIX,apps.mzstatic.com,PROXY
@@ -54,7 +57,28 @@ HOST,in.appcenter.ms,PROXY
 HOST-SUFFIX,azureedge.net,PROXY
 HOST-SUFFIX,imgix.net,PROXY
 
-# ==================== Anthropic / Claude（24）====================
+
+# ==================== OpenAI / ChatGPT（17）====================
+# 2026-10-07 并回（此前拆出单独走）；来源 blackmatrix7/ios_rule_script OpenAI.list（2025-06-06），与通用基础设施重复的已去重
+HOST,chat.openai.com.cdn.cloudflare.net,PROXY
+HOST,openai-api.arkoselabs.com,PROXY
+HOST,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net,PROXY
+HOST,openaicomproductionae4b.blob.core.windows.net,PROXY
+HOST,production-openaicom-storage.azureedge.net,PROXY
+HOST-SUFFIX,chatgpt.com,PROXY
+HOST-SUFFIX,chatgpt.livekit.cloud,PROXY
+HOST-SUFFIX,host.livekit.cloud,PROXY
+HOST-SUFFIX,oaistatic.com,PROXY
+HOST-SUFFIX,oaiusercontent.com,PROXY
+HOST-SUFFIX,openai.com,PROXY
+HOST-SUFFIX,openaiapi-site.azureedge.net,PROXY
+HOST-SUFFIX,openaicom.imgix.net,PROXY
+HOST-SUFFIX,turn.livekit.cloud,PROXY
+HOST-KEYWORD,openai,PROXY
+IP-CIDR,24.199.123.28/32,PROXY
+IP-CIDR,64.23.132.171/32,PROXY
+
+# ==================== Anthropic / Claude（25）====================
 HOST-SUFFIX,anthropic.com,PROXY
 HOST-SUFFIX,claude.ai,PROXY
 HOST-SUFFIX,claude.com,PROXY
@@ -85,8 +109,12 @@ IP-CIDR,160.79.104.0/21,PROXY
 IP6-CIDR,2607:6bc0::/48,PROXY
 # Anthropic 官方机房 IP 段 AS399358（claude-routing.list 补入）
 
+# 2026-10-07 从独立订阅并入（独立文件原样保留）
+HOST-SUFFIX,statsig.com,PROXY
+
 # ==================== OpenRouter（1）====================
 HOST-SUFFIX,openrouter.ai,PROXY
+
 
 # ==================== Cursor（5）====================
 HOST-SUFFIX,cursor-cdn.com,PROXY
@@ -95,8 +123,10 @@ HOST-SUFFIX,cursor.sh,PROXY
 HOST-SUFFIX,cursorapi.com,PROXY
 HOST-SUFFIX,cursorvm.com,PROXY
 
+
 # ==================== Zed（1）====================
 HOST-SUFFIX,zed.dev,PROXY
+
 
 # ==================== Google AI（36）====================
 HOST-SUFFIX,generativeai.google,PROXY
@@ -136,12 +166,15 @@ HOST-SUFFIX,googleapis.com,PROXY
 HOST-SUFFIX,notebooklm.google.com,PROXY
 HOST-SUFFIX,notebooklm.google,PROXY
 
+
 # ==================== Groq（1）====================
 HOST-SUFFIX,groq.com,PROXY
+
 
 # ==================== Grazie AI（2）====================
 HOST-SUFFIX,grazie.ai,PROXY
 HOST-SUFFIX,grazie.aws.intellij.net,PROXY
+
 
 # ==================== Meta AI（11）====================
 HOST-SUFFIX,meta.ai,PROXY
@@ -155,6 +188,7 @@ HOST,meta-ohttp-config-prod.fastly-edge.com,PROXY
 HOST,meta-ohttp-relay-prod.fastly-edge.com,PROXY
 HOST-SUFFIX,facebook.com,PROXY
 HOST-SUFFIX,fbcdn.net,PROXY
+
 
 # ==================== Microsoft Copilot（18）====================
 HOST,copilot.microsoft.com,PROXY
@@ -176,16 +210,19 @@ HOST-SUFFIX,api.microsoftapp.net,PROXY
 HOST-SUFFIX,bing-shopping.microsoft-falcon.io,PROXY
 HOST-SUFFIX,edgeservices.bing.com,PROXY
 
+
 # ==================== Perplexity（4）====================
 HOST-SUFFIX,perplexity.ai,PROXY
 HOST-SUFFIX,pplx.ai,PROXY
 HOST,pplx-res.cloudinary.com,PROXY
 HOST-SUFFIX,perplexity.com,PROXY
 
+
 # ==================== xAI / Grok（3）====================
 HOST-SUFFIX,grok.com,PROXY
 HOST-SUFFIX,x.ai,PROXY
 HOST,api.x.ai,PROXY
+
 
 # ==================== 其他（6）====================
 HOST-SUFFIX,ai.com,PROXY
@@ -195,33 +232,54 @@ HOST-SUFFIX,ogs.google.com,PROXY
 HOST-SUFFIX,www.google.com,PROXY
 HOST,production.museai.com,PROXY
 
+
 # ==================== JetBrains AI（1）====================
 HOST-SUFFIX,jetbrains.ai,PROXY
+
 
 # ==================== Mistral（3）====================
 HOST,chat.mistral.ai,PROXY
 HOST,console.mistral.ai,PROXY
 HOST-SUFFIX,mistral.ai,PROXY
 
+
 # ==================== Dify（1）====================
 HOST-SUFFIX,dify.ai,PROXY
 
-# ==================== Meta Muse（1）====================
+
+# ==================== Meta Muse（8）====================
 HOST-SUFFIX,muse.ai,PROXY
+
+# 2026-10-07 从独立订阅并入（独立文件原样保留）
+HOST-SUFFIX,metaaiusercontent.com,PROXY
+HOST-SUFFIX,ecto1usercontent.com,PROXY
+HOST-SUFFIX,meta-agents-apps.workers.dev,PROXY
+HOST-SUFFIX,metaaivm.com,PROXY
+HOST,o4509963614355457.ingest.us.sentry.io,PROXY
+HOST,www.facebook.com,PROXY
+HOST,graph.facebook.com,PROXY
 
 # ==================== Midjourney（1）====================
 HOST-SUFFIX,midjourney.com,PROXY
 
+
 # ==================== Poe（2）====================
 HOST-SUFFIX,poe.com,PROXY
 HOST-SUFFIX,poecdn.net,PROXY
+
 
 # ==================== HuggingFace（3）====================
 HOST-SUFFIX,huggingface.co,PROXY
 HOST-SUFFIX,hf.co,PROXY
 HOST-SUFFIX,hf.space,PROXY
 
+
 # ==================== Manus（2）====================
 HOST-SUFFIX,manus.im,PROXY
 HOST-SUFFIX,manuscdn.com,PROXY
 
+
+
+# ==================== Hark（1）====================
+# 2026-10-07 新增：Brett Adcock 的 AI 创业公司，waitlist 阶段，基础版
+HOST-SUFFIX,hark.com,PROXY
