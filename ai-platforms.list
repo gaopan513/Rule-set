@@ -278,6 +278,10 @@ HOST-SUFFIX,hf.space,PROXY
 HOST-SUFFIX,manus.im,PROXY
 HOST-SUFFIX,manuscdn.com,PROXY
 
+# ==================== Cue（1）====================
+# 2026-10-09 新增：Manus 2.0 发布的个人智能体（cue.im 独立域名；静态资源走 files.manuscdn.com，已在 Manus 分区覆盖）；子域名 api/app/auth/cdn/www 经 DNS 验证存在，基础版
+HOST-SUFFIX,cue.im,PROXY
+
 
 
 # ==================== Hark（1）====================
